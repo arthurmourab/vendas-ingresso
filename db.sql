@@ -47,11 +47,11 @@ CREATE TABLE IF NOT EXISTS `events` (
     `date` VARCHAR(255) NOT NULL,
     `location` VARCHAR(255) NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
-    `partners_id` INT NOT NULL,
+    `partner_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX `fk_events_partners1_idx` (`partners_id` ASC) VISIBLE,
+    INDEX `fk_events_partners1_idx` (`partner_id` ASC) VISIBLE,
     CONSTRAINT `fk_events_partners1`
-    FOREIGN KEY (`partners_id`)
+    FOREIGN KEY (`partner_id`)
     REFERENCES `partners` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

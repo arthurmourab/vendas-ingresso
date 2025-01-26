@@ -1,3 +1,5 @@
+###
+# @name loginPartner1
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
@@ -7,7 +9,23 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/partners
+@tokenPartner1 = {{ loginPartner1.response.body.token }}
+
+###
+# @name loginCustomer1
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "customer1@user.com",
+  "password": "secret"
+}
+
+###
+@tokenCustomer1 = {{ loginCustomer1.response.body.token }}
+
+###
+POST http://localhost:3000/partners/register
 Content-Type: application/json
 
 {
@@ -18,7 +36,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/customers
+POST http://localhost:3000/customers/register
 Content-Type: application/json
 
 {
@@ -32,22 +50,25 @@ Content-Type: application/json
 ### Criação do evento pelo parceiro
 POST http://localhost:3000/partners/events
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwYXJ0bmVyMUB1c2VyLmNvbSIsImlhdCI6MTczNzkzNDUxNiwiZXhwIjoxNzM3OTM4MTE2fQ.S4Twod3EoUr5IZS8JnK1sLTPHYXI7dVP73RI15r485E
 
 {
-  "name": "Partner 1",
+  "name": "Evento teste 1",
   "description": "descrição do evento",
   "date": "2025-01-01T00:00:00",
   "location": "rua x, bairro etc"
 }
 
 ### Listagem de evento do parceiro
-GET http://localhost:3000/partners/events/
+GET http://localhost:3000/partners/events
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwYXJ0bmVyMUB1c2VyLmNvbSIsImlhdCI6MTczNzkzNDUxNiwiZXhwIjoxNzM3OTM4MTE2fQ.S4Twod3EoUr5IZS8JnK1sLTPHYXI7dVP73RI15r485E
 
 ### Listagem de 1 evento do parceiro
-GET http://localhost:3000/partners/events/1000
+GET http://localhost:3000/partners/events/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwYXJ0bmVyMUB1c2VyLmNvbSIsImlhdCI6MTczNzkzNDUxNiwiZXhwIjoxNzM3OTM4MTE2fQ.S4Twod3EoUr5IZS8JnK1sLTPHYXI7dVP73RI15r485E
 
 ### Listagem de eventos
 GET http://localhost:3000/events/
 
 ### Listagem de 1 evento
-GET http://localhost:3000/events/1000
+GET http://localhost:3000/events/10
