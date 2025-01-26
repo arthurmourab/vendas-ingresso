@@ -3,11 +3,11 @@ use tickets;
 CREATE TABLE IF NOT EXISTS `users` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`))
-    ENGINE = InnoDB
+    ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `partners` (
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
     REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-    ENGINE = InnoDB
+    ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `events` (
@@ -55,4 +55,4 @@ CREATE TABLE IF NOT EXISTS `events` (
     REFERENCES `partners` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-    ENGINE = InnoDB
+    ENGINE = InnoDB;

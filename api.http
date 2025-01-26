@@ -1,4 +1,4 @@
-POST http://localhost:3000/partners
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
@@ -22,8 +22,8 @@ POST http://localhost:3000/customers
 Content-Type: application/json
 
 {
-  "name": "Partner 1",
-  "email": "partner1@user.com",
+  "name": "Customer 1",
+  "email": "customer1@user.com",
   "password": "secret",
   "address": "address test",
   "phone": "99999999"
